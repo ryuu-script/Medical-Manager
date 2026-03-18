@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+
+    <title>Medical Manager</title>
+</head>
+<body>
+
+    <section class="profile-sec">
+        <div class="stat-id">
+            <h3 class="stat-id-title">Station ID</h3>
+            <p class="stat-id-content">
+                CCU-NORTH-04 | 
+                <strong>Last Sync:</strong> March 18, 2026 - 11:04:30 AM | 
+                <strong>Status:</strong> System Active
+            </p>
+        </div>
+
+        <div class="patient">
+            <div class="patient-pic">
+                <img src="img/patient-photo.png" alt="Patient Photo">
+            </div>
+
+            <div class="patient-info">
+                <h2 class="patient-name">Patient Profile: J. Doe</h2>
+                <ul>
+                    <li><strong>DOB:</strong> 05/12/1978 (47 Years)</li>
+                    <li><strong>Admission Date:</strong> March 15, 2026</li>
+                    <li><strong>Primary Physician:</strong> Dr. Aris Thorne</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="vitals-sec">
+        <div class="vitals-sec-H_RATE">
+            <h2 class="heart-rate">Heart Rate (ECG)</h2>
+                <ul>
+                    <li><strong>Value:</strong> 72 bpm</li>
+                    <li><strong>Trend:</strong> Stable</li>
+                    <li><strong>Alert Threshold:</strong> < 50 | > 120</li>
+                    <li><strong>Description:</strong> Sinus rhythm detected. No irregular PVCs noted in the last 6-hour window.</li>
+                </ul>
+        </div>
+
+        <div class="vitals-sec-OXYGN_SAT">
+            <h2 class="oxygen-saturation">Oxygen Saturation (SpO2)</h2>
+                <ul>
+                    <li><strong>Value:</strong> 98%</li>
+                    <li><strong>Trend:</strong> Optimal</li>
+                    <li><strong>Source:</strong> Finger Pulse Oximeter - Right Hand</li>
+                    <li><strong>Description:</strong> Room air. Patient maintaining saturation without supplemental O2.</li>
+                </ul>
+        </div>
+
+        <div class="vitals-sec-B_PRESS">
+            <h2 class="blood-pressure">Blood Pressure (NIBP)</h2>
+                <ul>
+                    <li><strong>Value:</strong> 120/80 mmHg</li>
+                    <li><strong>Mean Arterial Pressure (MAP):</strong> 93 mmHg</li>
+                    <li><strong>Last Reading:</strong> 4 minutes ago</li>
+                    <li><strong>Description:</strong> Within target clinical range for post-operative recovery.</li>
+                </ul>
+        </div>
+
+        <div class="vitals-sec-CORE_TEMP">
+            <h2 class="core-temperature">Core Temperature</h2>
+                <ul>
+                    <li><strong>Value:</strong> 37.1°C (98.8°F)</li>
+                    <li><strong>Status:</strong> Normothermic</li>
+                    <li><strong>Trend:</strong> Steady</li>
+                    <li><strong>Description:</strong> No febrile activity detected since admission.</li>
+                </ul>
+        </div>
+    </section>
+
+    <section class="alerts-sec">
+        <table>
+            <thead>
+                <tr>
+                    <td>Log Time</td>
+                    <td>Description</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>[LOG 08:30 AM]: </td>
+                    <td>Morning rounds completed. Patient responsive and oriented x3.</td>
+                </tr>
+                <tr>
+                    <td>[LOG 10:45 AM]: </td>
+                    <td> Laboratory results for Metabolic Panel (BMP) are now pending review.</td>
+                </tr>
+                <tr>
+                    <td>[LOG 11:00 AM]: </td>
+                    <td>Routine IV pump maintenance scheduled for 13:00. </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </section>
+
+    <section class="quickAct-sec">
+        <ul>
+            <li><a href="https://example.com" class="button">Request Stat Nurse Assist</a></li>
+            <li><a href="https://example.com" class="button">Download 24h Trend Report (PDF)</a></li>
+            <li><a href="https://example.com" class="button">Open Telemetry Stream</a></li>
+            <li><a href="https://example.com" class="button">Update Patient Chart</a></li>
+        </ul>
+    </section>
+
+</body>
+</html>
