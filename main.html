@@ -3,115 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Medical Manager — Patient monitoring dashboard for CCU-NORTH-04.">
     <link rel="stylesheet" href="main.css">
 
     <title>Medical Manager</title>
 </head>
 <body>
 
-    <section class="profile-sec">
-        <div class="stat-id">
-            <h3 class="stat-id-title">Station ID</h3>
-            <p class="stat-id-content">
-                CCU-NORTH-04 | 
-                <strong>Last Sync:</strong> March 18, 2026 - 11:04:30 AM | 
-                <strong>Status:</strong> System Active
-            </p>
-        </div>
+    <main>
 
-        <div class="patient">
-            <div class="patient-pic">
-                <img src="img/patient-photo.png" alt="Patient Photo">
+        <!-- ─── Patient Profile ─────────────────────────────────────────── -->
+        <section class="profile-sec" aria-labelledby="profile-heading">
+
+            <div class="stat-id" role="status" aria-live="polite">
+                <h3 class="stat-id-title" id="profile-heading">Station ID</h3>
+                <p class="stat-id-content">
+                    CCU-NORTH-04 |
+                    <strong>Last Sync:</strong> <time datetime="2026-03-18T11:04:30">March 18, 2026 – 11:04:30 AM</time> |
+                    <strong>Status:</strong> <span class="status-badge">System Active</span>
+                </p>
             </div>
 
-            <div class="patient-info">
-                <h2 class="patient-name">Patient Profile: J. Doe</h2>
-                <ul>
-                    <li><strong>DOB:</strong> 05/12/1978 (47 Years)</li>
-                    <li><strong>Admission Date:</strong> March 15, 2026</li>
-                    <li><strong>Primary Physician:</strong> Dr. Aris Thorne</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+            <div class="patient">
+                <div class="patient-pic">
+                    <img src="img/patient-photo.png" alt="Profile photo of patient J. Doe" width="120" height="120">
+                </div>
 
-    <section class="vitals-sec">
-        <div class="vitals-sec-H_RATE">
-            <h2 class="heart-rate">Heart Rate (ECG)</h2>
+                <div class="patient-info">
+                    <h2 class="patient-name">Patient Profile: J. Doe</h2>
+                    <ul>
+                        <li><strong>DOB:</strong> <time datetime="1978-05-12">05/12/1978</time> (47 Years)</li>
+                        <li><strong>Admission Date:</strong> <time datetime="2026-03-15">March 15, 2026</time></li>
+                        <li><strong>Primary Physician:</strong> Dr. Aris Thorne</li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ─── Vitals ──────────────────────────────────────────────────── -->
+        <section class="vitals-sec" aria-labelledby="vitals-heading">
+            <h2 id="vitals-heading" class="sr-only">Patient Vitals</h2>
+
+            <article class="vitals-sec-H_RATE" aria-labelledby="heart-rate-heading">
+                <h2 class="heart-rate" id="heart-rate-heading">Heart Rate (ECG)</h2>
                 <ul>
                     <li><strong>Value:</strong> 72 bpm</li>
                     <li><strong>Trend:</strong> Stable</li>
-                    <li><strong>Alert Threshold:</strong> < 50 | > 120</li>
+                    <li><strong>Alert Threshold:</strong> &lt; 50 | &gt; 120</li>
                     <li><strong>Description:</strong> Sinus rhythm detected. No irregular PVCs noted in the last 6-hour window.</li>
                 </ul>
-        </div>
+            </article>
 
-        <div class="vitals-sec-OXYGN_SAT">
-            <h2 class="oxygen-saturation">Oxygen Saturation (SpO2)</h2>
+            <article class="vitals-sec-OXYGN_SAT" aria-labelledby="spo2-heading">
+                <h2 class="oxygen-saturation" id="spo2-heading">Oxygen Saturation (SpO2)</h2>
                 <ul>
                     <li><strong>Value:</strong> 98%</li>
                     <li><strong>Trend:</strong> Optimal</li>
-                    <li><strong>Source:</strong> Finger Pulse Oximeter - Right Hand</li>
+                    <li><strong>Source:</strong> Finger Pulse Oximeter – Right Hand</li>
                     <li><strong>Description:</strong> Room air. Patient maintaining saturation without supplemental O2.</li>
                 </ul>
-        </div>
+            </article>
 
-        <div class="vitals-sec-B_PRESS">
-            <h2 class="blood-pressure">Blood Pressure (NIBP)</h2>
+            <article class="vitals-sec-B_PRESS" aria-labelledby="bp-heading">
+                <h2 class="blood-pressure" id="bp-heading">Blood Pressure (NIBP)</h2>
                 <ul>
                     <li><strong>Value:</strong> 120/80 mmHg</li>
                     <li><strong>Mean Arterial Pressure (MAP):</strong> 93 mmHg</li>
                     <li><strong>Last Reading:</strong> 4 minutes ago</li>
                     <li><strong>Description:</strong> Within target clinical range for post-operative recovery.</li>
                 </ul>
-        </div>
+            </article>
 
-        <div class="vitals-sec-CORE_TEMP">
-            <h2 class="core-temperature">Core Temperature</h2>
+            <article class="vitals-sec-CORE_TEMP" aria-labelledby="temp-heading">
+                <h2 class="core-temperature" id="temp-heading">Core Temperature</h2>
                 <ul>
                     <li><strong>Value:</strong> 37.1°C (98.8°F)</li>
                     <li><strong>Status:</strong> Normothermic</li>
                     <li><strong>Trend:</strong> Steady</li>
                     <li><strong>Description:</strong> No febrile activity detected since admission.</li>
                 </ul>
-        </div>
-    </section>
+            </article>
 
-    <section class="alerts-sec">
-        <table>
-            <thead>
-                <tr>
-                    <td>Log Time</td>
-                    <td>Description</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>[LOG 08:30 AM]: </td>
-                    <td>Morning rounds completed. Patient responsive and oriented x3.</td>
-                </tr>
-                <tr>
-                    <td>[LOG 10:45 AM]: </td>
-                    <td> Laboratory results for Metabolic Panel (BMP) are now pending review.</td>
-                </tr>
-                <tr>
-                    <td>[LOG 11:00 AM]: </td>
-                    <td>Routine IV pump maintenance scheduled for 13:00. </td>
-                </tr>
+        </section>
 
 
-            </tbody>
-        </table>
-    </section>
+        <!-- ─── Activity Log ────────────────────────────────────────────── -->
+        <section class="alerts-sec" aria-labelledby="log-heading">
+            <h2 id="log-heading" class="sr-only">Activity Log</h2>
 
-    <section class="quickAct-sec">
-        <ul>
-            <li><a href="https://example.com" class="button">Request Stat Nurse Assist</a></li>
-            <li><a href="https://example.com" class="button">Download 24h Trend Report (PDF)</a></li>
-            <li><a href="https://example.com" class="button">Open Telemetry Stream</a></li>
-            <li><a href="https://example.com" class="button">Update Patient Chart</a></li>
-        </ul>
-    </section>
+            <table aria-label="Patient activity log">
+                <thead>
+                    <tr>
+                        <th scope="col">Log Time</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><time datetime="2026-03-18T08:30">[LOG 08:30 AM]:</time></td>
+                        <td>Morning rounds completed. Patient responsive and oriented x3.</td>
+                    </tr>
+                    <tr>
+                        <td><time datetime="2026-03-18T10:45">[LOG 10:45 AM]:</time></td>
+                        <td>Laboratory results for Metabolic Panel (BMP) are now pending review.</td>
+                    </tr>
+                    <tr>
+                        <td><time datetime="2026-03-18T11:00">[LOG 11:00 AM]:</time></td>
+                        <td>Routine IV pump maintenance scheduled for 13:00.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </section>
+
+
+        <!-- ─── Quick Actions ───────────────────────────────────────────── -->
+        <section class="quickAct-sec" aria-labelledby="actions-heading">
+            <h2 id="actions-heading" class="sr-only">Quick Actions</h2>
+
+            <ul role="list">
+                <li><a href="https://example.com" class="button" role="button">Request Stat Nurse Assist</a></li>
+                <li><a href="https://example.com" class="button" role="button">Download 24h Trend Report (PDF)</a></li>
+                <li><a href="https://example.com" class="button" role="button">Open Telemetry Stream</a></li>
+                <li><a href="https://example.com" class="button" role="button">Update Patient Chart</a></li>
+            </ul>
+
+        </section>
+
+    </main>
 
 </body>
 </html>
