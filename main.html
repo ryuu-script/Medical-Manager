@@ -1,3 +1,18 @@
+<!-- 
+===============================================================================
+
+Create a webpage with 4 sections highlighted in red text to organize 
+contents for (Profile, Vital Signs, gallery and contact us). Your webpage 
+should contain navigation tags/links to each section. Customize your 
+webpage according to your design and styling preferences the content for 
+each section is specified below. Save your work as .html file, use 
+MidtermReview_familyname as the filename and subject line. Send your webpage 
+progress screenshot by the end of class and you can continue this as a reviewer 
+assignment. Deadline of the completed page would be March 23, 11:59PM:
+
+===============================================================================
+--> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +22,45 @@
     <link rel="stylesheet" href="main.css">
 
     <title>Medical Manager</title>
+
+    <script>(function(){var t=localStorage.getItem('theme');
+    if(t)document.documentElement.setAttribute('data-theme',t);})();
+    </script>
 </head>
 <body>
+
+    <div id="loader" aria-hidden="true" role="presentation">
+        <div class="ld-ring-wrap">
+            <svg class="ld-ring-svg" viewBox="0 0 100 100">
+                <circle class="ld-track" cx="50" cy="50" r="40"/>
+                <circle class="ld-fill"  cx="50" cy="50" r="40"/>
+            </svg>
+            <div class="ld-dot"></div>
+        </div>
+        <div class="ld-body">
+            <p class="ld-title">Medical Manager</p>
+            <p class="ld-sub">CCU-NORTH-04 &middot; Initializing</p>
+            <div class="ld-line"></div>
+            <p class="ld-pct" id="ldPct">0%</p>
+        </div>
+        <div class="ld-wipe ld-wipe--l"></div>
+        <div class="ld-wipe ld-wipe--r"></div>
+    </div>
+
+    <!-- ─── Quick-Action Popup Modal ──────────────────────────── -->
+    <div id="qa-modal" class="qa-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="qa-modal-title">
+        <div class="qa-modal-box">
+            <div class="qa-modal-icon" id="qa-modal-icon" aria-hidden="true"></div>
+            <h3 class="qa-modal-title" id="qa-modal-title"></h3>
+            <p class="qa-modal-body" id="qa-modal-body"></p>
+            <button class="qa-modal-close" id="qa-modal-close" aria-label="Dismiss">Dismiss</button>
+        </div>
+    </div>
 
     <main>
 
         <!-- ─── Patient Profile ─────────────────────────────────────────── -->
+        <h1 class="section-label section-label--profile">Profile.</h1>
         <section class="profile-sec" aria-labelledby="profile-heading">
 
             <div class="stat-id" role="status" aria-live="polite">
@@ -22,11 +70,15 @@
                     <strong>Last Sync:</strong> <time datetime="2026-03-18T11:04:30">March 18, 2026 – 11:04:30 AM</time> |
                     <strong>Status:</strong> <span class="status-badge">System Active</span>
                 </p>
+
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <span class="theme-toggle-icon">☀︎</span>
+                </button>
             </div>
 
             <div class="patient">
                 <div class="patient-pic">
-                    <img src="img/patient-photo.png" alt="Profile photo of patient J. Doe" width="120" height="120">
+                    <img src="img/patient_photo.jpg" alt="J. Doe" width="120" height="120">
                 </div>
 
                 <div class="patient-info">
@@ -43,11 +95,13 @@
 
 
         <!-- ─── Vitals ──────────────────────────────────────────────────── -->
+        <h1 class="section-label section-label--vitals">Vital Signs.</h1>
         <section class="vitals-sec" aria-labelledby="vitals-heading">
             <h2 id="vitals-heading" class="sr-only">Patient Vitals</h2>
 
-            <article class="vitals-sec-H_RATE" aria-labelledby="heart-rate-heading">
+            <article id="vital-hr" class="vitals-sec-H_RATE" aria-labelledby="heart-rate-heading">
                 <h2 class="heart-rate" id="heart-rate-heading">Heart Rate (ECG)</h2>
+                <canvas class="graph-canvas" aria-hidden="true"></canvas>
                 <ul>
                     <li><strong>Value:</strong> 72 bpm</li>
                     <li><strong>Trend:</strong> Stable</li>
@@ -56,8 +110,9 @@
                 </ul>
             </article>
 
-            <article class="vitals-sec-OXYGN_SAT" aria-labelledby="spo2-heading">
+            <article id="vital-o2" class="vitals-sec-OXYGN_SAT" aria-labelledby="spo2-heading">
                 <h2 class="oxygen-saturation" id="spo2-heading">Oxygen Saturation (SpO2)</h2>
+                <canvas class="graph-canvas" aria-hidden="true"></canvas>
                 <ul>
                     <li><strong>Value:</strong> 98%</li>
                     <li><strong>Trend:</strong> Optimal</li>
@@ -66,8 +121,9 @@
                 </ul>
             </article>
 
-            <article class="vitals-sec-B_PRESS" aria-labelledby="bp-heading">
+            <article id="vital-bp" class="vitals-sec-B_PRESS" aria-labelledby="bp-heading">
                 <h2 class="blood-pressure" id="bp-heading">Blood Pressure (NIBP)</h2>
+                <canvas class="graph-canvas" aria-hidden="true"></canvas>
                 <ul>
                     <li><strong>Value:</strong> 120/80 mmHg</li>
                     <li><strong>Mean Arterial Pressure (MAP):</strong> 93 mmHg</li>
@@ -76,8 +132,9 @@
                 </ul>
             </article>
 
-            <article class="vitals-sec-CORE_TEMP" aria-labelledby="temp-heading">
+            <article id="vital-temp" class="vitals-sec-CORE_TEMP" aria-labelledby="temp-heading">
                 <h2 class="core-temperature" id="temp-heading">Core Temperature</h2>
+                <canvas class="graph-canvas" aria-hidden="true"></canvas>
                 <ul>
                     <li><strong>Value:</strong> 37.1°C (98.8°F)</li>
                     <li><strong>Status:</strong> Normothermic</li>
@@ -90,6 +147,7 @@
 
 
         <!-- ─── Activity Log ────────────────────────────────────────────── -->
+        <h1 class="section-label section-label--alerts">Active Clinical Alerts.</h1> 
         <section class="alerts-sec" aria-labelledby="log-heading">
             <h2 id="log-heading" class="sr-only">Activity Log</h2>
 
@@ -120,6 +178,7 @@
 
 
         <!-- ─── Quick Actions ───────────────────────────────────────────── -->
+        <h1 class="section-label section-label--actions">System Quick-Actions.</h1>
         <section class="quickAct-sec" aria-labelledby="actions-heading">
             <h2 id="actions-heading" class="sr-only">Quick Actions</h2>
 
@@ -133,6 +192,6 @@
         </section>
 
     </main>
-
+    <script src="main.js" defer></script>
 </body>
 </html>
