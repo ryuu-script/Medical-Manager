@@ -2,7 +2,7 @@
 
 <img src="WebScreenshots/Navigation_Bar.png" alt="Medical Manager Navigation" width="600"/>
 
-# 🏥 Medical Manager
+# 𖹭 Medical Manager
 ### Patient Monitoring Dashboard — CCU-NORTH-04
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
@@ -17,7 +17,7 @@
 
 ---
 
-## 📸 Full Preview
+## 𖹭 Full Preview
 
 <div align="center">
 <img src="WebScreenshots/Full_Site.png" alt="Full Site Preview" width="800"/>
@@ -25,9 +25,9 @@
 
 ---
 
-## ✨ Features
+## 𖹭 Features
 
-### 🧭 Smart Navigation Bar
+### 𖹭 Smart Navigation Bar
 <img src="WebScreenshots/Navigation_Bar.png" alt="Navigation Bar" width="700"/>
 
 - Fixed pill-shaped nav bar with **color-coded section indicators**
@@ -38,7 +38,7 @@
 
 ---
 
-### 👤 Patient Profile
+### 𖹭 Patient Profile
 <img src="WebScreenshots/Profile.png" alt="Patient Profile" width="700"/>
 
 - Displays patient photo, name, DOB, admission date, and attending physician
@@ -48,7 +48,7 @@
 
 ---
 
-### 🖼️ 3D Image Gallery
+### 𖹭 3D Image Gallery
 <img src="WebScreenshots/Gallery.png" alt="Gallery" width="700"/>
 
 - **3D carousel** with `perspective` and `rotateY` CSS transforms
@@ -59,7 +59,7 @@
 
 ---
 
-### 📊 Vital Signs Monitor
+### 𖹭 Vital Signs Monitor
 <img src="WebScreenshots/Vitals.png" alt="Vital Signs" width="700"/>
 
 - Four live **sparkline charts** rendered on `<canvas>` for:
@@ -73,7 +73,7 @@
 
 ---
 
-### 🚨 Active Clinical Alerts
+### 𖹭 Active Clinical Alerts
 <img src="WebScreenshots/Alerts.png" alt="Clinical Alerts" width="700"/>
 
 - Timestamped **activity log table** for clinical events
@@ -82,20 +82,20 @@
 
 ---
 
-### ⚡ System Quick-Actions
+### 𖹭 System Quick-Actions
 <img src="WebScreenshots/Quick_Actions.png" alt="Quick Actions" width="700"/>
 
 - Four action buttons with **unique accent colors** per action type
 - Each button triggers a **popup modal** with contextual information:
-  - 🚨 Request Stat Nurse Assist
-  - 📄 Download 24h Trend Report
-  - 📡 Open Telemetry Stream
-  - 📝 Update Patient Chart
+  - 𖹭 Request Stat Nurse Assist
+  - 𖹭 Download 24h Trend Report
+  - 𖹭 Open Telemetry Stream
+  - 𖹭 Update Patient Chart
 - Modal supports keyboard (`Escape`) and backdrop-click to dismiss
 
 ---
 
-### 📬 Contact Us
+### 𖹭 Contact Us
 <img src="WebScreenshots/Contact_Us.png" alt="Contact Us" width="700"/>
 
 - Two-column layout: **contact info panel** + **message form**
@@ -107,7 +107,7 @@
 
 ---
 
-### 🔻 Footer
+### 𖹭 Footer
 <img src="WebScreenshots/Footer.png" alt="Footer" width="700"/>
 
 - Glassmorphism card matching the overall aesthetic
@@ -116,7 +116,7 @@
 
 ---
 
-## 🎨 Design System
+## 𖹭 Design System
 
 | Token | Light (Latte) | Dark (Mocha) |
 |---|---|---|
@@ -135,7 +135,7 @@
 
 ---
 
-## 🔊 Sound Design
+## 𖹭 Sound Design
 
 | Event | File |
 |---|---|
@@ -147,10 +147,10 @@ All sounds are throttled, cloned per-play, and wrapped in `.catch(() => {})` to 
 
 ---
 
-## 📁 Project Structure
+## 𖹭 Project Structure
 
 ```
-📦 project/
+𖹭 project/
 ├── main.html              # Main page structure
 ├── main.css               # All styles & design tokens
 ├── main.js                # All interactive behavior
@@ -170,7 +170,7 @@ All sounds are throttled, cloned per-play, and wrapped in `.catch(() => {})` to 
 
 ---
 
-## 🚀 Getting Started
+## 𖹭 Getting Started
 
 No build tools or dependencies required. Just open the file:
 
@@ -182,11 +182,11 @@ git clone https://github.com/yourusername/medical-manager.git
 open main.html
 ```
 
-> ⚠️ Sound effects require a local server or user interaction to play due to browser autoplay policies. Use [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) in VS Code for best results.
+> 𖹭 Sound effects require a local server or user interaction to play due to browser autoplay policies. Use [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) in VS Code for best results.
 
 ---
 
-## ♿ Accessibility
+## 𖹭 Accessibility
 
 - Semantic HTML5 elements (`<main>`, `<section>`, `<article>`, `<nav>`, `<footer>`, `<time>`)
 - `aria-label`, `aria-labelledby`, `aria-live`, `aria-hidden` throughout
