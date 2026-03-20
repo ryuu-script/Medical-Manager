@@ -63,10 +63,10 @@
 <img src="WebScreenshots/Vitals.png" alt="Vital Signs" width="700"/>
 
 - Four live **sparkline charts** rendered on `<canvas>` for:
-  - ❤️ Heart Rate (ECG)
-  - 🟢 Oxygen Saturation (SpO2)
-  - 🔵 Blood Pressure (NIBP)
-  - 🟡 Core Temperature
+  - 𖹭 Heart Rate (ECG)
+  - 𖹭 Oxygen Saturation (SpO2)
+  - 𖹭 Blood Pressure (NIBP)
+  - 𖹭 Core Temperature
 - Charts animate in with a **wave-sweep effect** on page load
 - Color-coded per vital using Catppuccin accent tokens
 - Randomized data generation with mean-reversion noise simulation
@@ -176,7 +176,7 @@ No build tools or dependencies required. Just open the file:
 
 ```bash
 # Clone the repo
-git clone https://github.com/yourusername/medical-manager.git
+git clone https://github.com/ryuu-script/Medical-Manager.git
 
 # Open in browser
 open main.html
