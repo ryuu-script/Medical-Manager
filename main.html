@@ -57,9 +57,38 @@ assignment. Deadline of the completed page would be March 23, 11:59PM:
         </div>
     </div>
 
+    <!-- ─── Navigation Bar ─────────────────────────────────────── -->
+    <nav class="site-nav" aria-label="Page sections">
+        <a href="#sec-profile" class="nav-link" data-section="profile">
+            <span class="nav-dot nav-dot--profile"></span>
+            <span class="nav-label">Profile</span>
+        </a>
+        <a href="#sec-gallery" class="nav-link" data-section="gallery">
+            <span class="nav-dot nav-dot--gallery"></span>
+            <span class="nav-label">Gallery</span>
+        </a>
+        <a href="#sec-vitals" class="nav-link" data-section="vitals">
+            <span class="nav-dot nav-dot--vitals"></span>
+            <span class="nav-label">Vital Signs</span>
+        </a>
+        <a href="#sec-alerts" class="nav-link" data-section="alerts">
+            <span class="nav-dot nav-dot--alerts"></span>
+            <span class="nav-label">Alerts</span>
+        </a>
+        <a href="#sec-actions" class="nav-link" data-section="actions">
+            <span class="nav-dot nav-dot--actions"></span>
+            <span class="nav-label">Quick Actions</span>
+        </a>
+        <a href="#sec-contact" class="nav-link" data-section="contact">
+            <span class="nav-dot nav-dot--contact"></span>
+            <span class="nav-label">Contact</span>
+        </a>
+    </nav>
+
     <main>
 
         <!-- ─── Patient Profile ─────────────────────────────────────────── -->
+        <div class="section-group" id="sec-profile">
         <h1 class="section-label section-label--profile">Profile.</h1>
         <section class="profile-sec" aria-labelledby="profile-heading">
 
@@ -82,7 +111,7 @@ assignment. Deadline of the completed page would be March 23, 11:59PM:
                 </div>
 
                 <div class="patient-info">
-                    <h2 class="patient-name">Patient Profile: J. Doe</h2>
+                    <h2 class="patient-name">Patient Profile: &nbsp; J. Doe</h2>
                     <ul>
                         <li><strong>DOB:</strong> <time datetime="1978-05-12">05/12/1978</time> (47 Years)</li>
                         <li><strong>Admission Date:</strong> <time datetime="2026-03-15">March 15, 2026</time></li>
@@ -92,9 +121,54 @@ assignment. Deadline of the completed page would be March 23, 11:59PM:
             </div>
 
         </section>
+        </div>
+
+        <div class="section-group" id="sec-gallery">
+            <h1 class="section-label section-label--gallery">Gallery.</h1>
+            <section class="gallery-sec" aria-labelledby="gallery-heading">
+                <h2 id="gallery-heading" class="sr-only">Image Gallery</h2>
+
+                <div class="gallery-stage" aria-label="3D image carousel">
+                    <div class="gallery-track">
+                        <!-- Slot 1 -->
+                        <div class="gallery-card">
+                            <img src="img/jane1.jpg" alt="Gallery image 1">
+                            <div class="gallery-card-label">01</div>
+                        </div>
+                        <!-- Slot 2 -->
+                        <div class="gallery-card">
+                            <img src="img/jane2.jpg" alt="Gallery image 2">
+                            <div class="gallery-card-label">02</div>
+                        </div>
+                        <!-- Slot 3 -->
+                        <div class="gallery-card">
+                            <img src="img/jane3.jpg" alt="Gallery image 3">
+                            <div class="gallery-card-label">03</div>
+                        </div>
+                        <!-- Slot 4 -->
+                        <div class="gallery-card">
+                            <img src="img/jane4.jpg" alt="Gallery image 4">
+                            <div class="gallery-card-label">04</div>
+                        </div>
+                        <!-- Slot 5 -->
+                        <div class="gallery-card">
+                            <img src="img/jane5.jpg" alt="Gallery image 5">
+                            <div class="gallery-card-label">05</div>
+                        </div>
+                    </div>
+
+                    <button class="gallery-btn gallery-btn--prev" aria-label="Previous slide">&#8592;</button>
+                    <button class="gallery-btn gallery-btn--next" aria-label="Next slide">&#8594;</button>
+
+                    <div class="gallery-dots" role="tablist" aria-label="Slide indicators"></div>
+                </div>
+
+            </section>
+        </div>
 
 
         <!-- ─── Vitals ──────────────────────────────────────────────────── -->
+        <div class="section-group" id="sec-vitals">
         <h1 class="section-label section-label--vitals">Vital Signs.</h1>
         <section class="vitals-sec" aria-labelledby="vitals-heading">
             <h2 id="vitals-heading" class="sr-only">Patient Vitals</h2>
@@ -144,9 +218,11 @@ assignment. Deadline of the completed page would be March 23, 11:59PM:
             </article>
 
         </section>
+        </div>
 
 
         <!-- ─── Activity Log ────────────────────────────────────────────── -->
+        <div class="section-group" id="sec-alerts">
         <h1 class="section-label section-label--alerts">Active Clinical Alerts.</h1> 
         <section class="alerts-sec" aria-labelledby="log-heading">
             <h2 id="log-heading" class="sr-only">Activity Log</h2>
@@ -175,23 +251,155 @@ assignment. Deadline of the completed page would be March 23, 11:59PM:
             </table>
 
         </section>
+        </div>
 
 
         <!-- ─── Quick Actions ───────────────────────────────────────────── -->
+        <div class="section-group" id="sec-actions">
         <h1 class="section-label section-label--actions">System Quick-Actions.</h1>
         <section class="quickAct-sec" aria-labelledby="actions-heading">
             <h2 id="actions-heading" class="sr-only">Quick Actions</h2>
 
             <ul role="list">
-                <li><a href="https://example.com" class="button" role="button">Request Stat Nurse Assist</a></li>
-                <li><a href="https://example.com" class="button" role="button">Download 24h Trend Report (PDF)</a></li>
-                <li><a href="https://example.com" class="button" role="button">Open Telemetry Stream</a></li>
-                <li><a href="https://example.com" class="button" role="button">Update Patient Chart</a></li>
+                <li><a href="" class="button" role="button">Request Stat Nurse Assist</a></li>
+                <li><a href="" class="button" role="button">Download 24h Trend Report (PDF)</a></li>
+                <li><a href="" class="button" role="button">Open Telemetry Stream</a></li>
+                <li><a href="" class="button" role="button">Update Patient Chart</a></li>
             </ul>
 
         </section>
+        </div>
+
+        <div class="section-group" id="sec-contact">
+            <h1 class="section-label section-label--contact">Contact Us.</h1>
+            <section class="contact-sec" aria-labelledby="contact-heading">
+                <h2 id="contact-heading" class="sr-only">Contact Us</h2>
+
+                <div class="contact-grid">
+
+                    <!-- ── Contact Info ── -->
+                    <div class="contact-info">
+                        <p class="contact-info-title">CCU-NORTH-04 Station</p>
+                        <p class="contact-info-sub">For emergencies, always use the in-room call system or dial the nurse station directly.</p>
+
+                        <ul class="contact-details">
+                            <li>
+                                <span class="contact-icon">❤︎⁠</span>
+                                <div>
+                                    <span class="contact-detail-label">Facility</span>
+                                    <span class="contact-detail-value">Christian J's Hospital</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="contact-icon">❤︎⁠</span>
+                                <div>
+                                    <span class="contact-detail-label">Ward</span>
+                                    <span class="contact-detail-value">Critical Care Unit — North Wing, Floor 4</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="contact-icon">❤︎⁠</span>
+                                <div>
+                                    <span class="contact-detail-label">Nurse Station</span>
+                                    <span class="contact-detail-value">+1 (555) 204-0491</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="contact-icon">❤︎⁠</span>
+                                <div>
+                                    <span class="contact-detail-label">Attending Physician</span>
+                                    <span class="contact-detail-value">Dr. Aris Thorne — ext. 3142</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="contact-icon">❤︎⁠</span>
+                                <div>
+                                    <span class="contact-detail-label">Email</span>
+                                    <span class="contact-detail-value">ryuuSrcipt@chrisJ.org</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- ── Message Form ── -->
+                    <div class="contact-form-wrap">
+                        <p class="contact-info-title">Send a Message</p>
+                        <p class="contact-info-sub">Non-urgent inquiries only. Responses within 24 hours.</p>
+
+                        <div class="contact-form">
+                            <div class="contact-field-row">
+                                <div class="contact-field">
+                                    <label class="contact-label" for="cf-name">Full Name</label>
+                                    <input class="contact-input" type="text" id="cf-name" placeholder="e.g. Maria Santos" autocomplete="name">
+                                </div>
+                                <div class="contact-field">
+                                    <label class="contact-label" for="cf-relation">Relation to Patient</label>
+                                    <input class="contact-input" type="text" id="cf-relation" placeholder="e.g. Spouse, Physician">
+                                </div>
+                            </div>
+                            <div class="contact-field">
+                                <label class="contact-label" for="cf-email">Email Address</label>
+                                <input class="contact-input" type="email" id="cf-email" placeholder="you@example.com" autocomplete="email">
+                            </div>
+                            <div class="contact-field">
+                                <label class="contact-label" for="cf-subject">Subject</label>
+                                <select class="contact-input contact-select" id="cf-subject">
+                                    <option value="" disabled selected>Select a topic…</option>
+                                    <option>Patient Status Inquiry</option>
+                                    <option>Visitation Request</option>
+                                    <option>Medical Records</option>
+                                    <option>Billing & Insurance</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="contact-field">
+                                <label class="contact-label" for="cf-message">Message</label>
+                                <textarea class="contact-input contact-textarea" id="cf-message" placeholder="Write your message here…" rows="4"></textarea>
+                            </div>
+                            <button class="contact-submit" id="contactSubmit" type="button">
+                                <span class="contact-submit-text">Send Message</span>
+                                <span class="contact-submit-icon">→</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
 
     </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+
+            <div class="footer-brand">
+                <span class="footer-dot"></span>
+                <span class="footer-title">Medical Manager</span>
+                <span class="footer-badge">CCU-NORTH-04</span>
+            </div>
+
+            <p class="footer-meta">
+                Patient: <strong>J. Doe</strong> &nbsp;·&nbsp;
+                Attending: <strong>Dr. Aris Thorne</strong> &nbsp;·&nbsp;
+                Admitted: <time datetime="2026-03-15">March 15, 2026</time>
+            </p>
+
+            <div class="footer-divider"></div>
+
+            <p class="footer-legal">
+                This dashboard is intended for authorized clinical personnel only.
+                All patient data is confidential and protected under applicable
+                medical privacy regulations. Unauthorized access is strictly prohibited.
+            </p>
+
+            <p class="footer-copy">
+                &copy; 2026 Medical Manager &nbsp;·&nbsp; CCU Monitoring Systems &nbsp;·&nbsp;
+                <span class="footer-status-dot"></span> System Active
+            </p>
+
+        </div>
+    </footer>
+
     <script src="main.js" defer></script>
 </body>
 </html>

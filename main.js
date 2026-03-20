@@ -87,11 +87,17 @@ const CLICK_SOUND = 'tingog/click.mp3';
     const audio = new Audio(SOUND_SRC);
     audio.volume = VOLUME;
 
-    document.querySelector('.quickAct-sec').addEventListener('mousedown', e => {
-        if (!e.target.closest('.button')) return;
+    function playQASound() {
         const instance = audio.cloneNode();
         instance.volume = VOLUME;
         instance.play().catch(() => {});
+    }
+
+    window.playQASound = playQASound;
+
+    document.querySelector('.quickAct-sec').addEventListener('mousedown', e => {
+        if (!e.target.closest('.button')) return;
+        playQASound();
     });
 })();
 
@@ -265,25 +271,25 @@ const CLICK_SOUND = 'tingog/click.mp3';
     const ACTIONS = {
         'btn-nurse': {
             type:  'nurse',
-            icon:  '🚨',
+            icon:  '♡',
             title: 'Nurse Assist Requested',
             body:  'A stat nurse assist has been dispatched to CCU-NORTH-04. Estimated response time: under 2 minutes. Please remain with the patient.',
         },
         'btn-report': {
             type:  'report',
-            icon:  '📄',
+            icon:  '♡',
             title: 'Generating Trend Report',
             body:  'Your 24-hour trend report is being compiled from the active telemetry feed. The PDF will download automatically once ready.',
         },
         'btn-telem': {
             type:  'telem',
-            icon:  '📡',
+            icon:  '♡',
             title: 'Telemetry Stream Active',
             body:  'Live waveform data is now streaming for CCU-NORTH-04. All sensor feeds are transmitting to the central monitoring station.',
         },
         'btn-chart': {
             type:  'chart',
-            icon:  '📝',
+            icon:  '♡',
             title: 'Patient Chart Updated',
             body:  'All changes have been saved to Patient J. Doe\'s record and time-stamped. The attending physician has been notified.',
         },
@@ -329,3 +335,263 @@ const CLICK_SOUND = 'tingog/click.mp3';
 
 })();
 
+
+// ─── Navigation: Scroll + Focus/Dim System ───────────────────
+(function () {
+    const SECTIONS = ['profile', 'gallery', 'vitals', 'alerts', 'actions', 'contact'];
+    const navLinks  = document.querySelectorAll('.nav-link');
+    const body      = document.body;
+    let   activeSection = null;
+
+    const getGroup = id => document.getElementById(`sec-${id}`);
+
+    function setActiveDot(sectionId) {
+        navLinks.forEach(l => l.classList.toggle('is-active', l.dataset.section === sectionId));
+    }
+
+    function clearActiveDot() {
+        navLinks.forEach(l => l.classList.remove('is-active'));
+    }
+
+    function enterFocus(sectionId) {
+        body.classList.add('nav-focus-mode');
+        SECTIONS.forEach(s => {
+            const g = getGroup(s);
+            if (!g) return;
+            g.classList.toggle('is-active', s === sectionId);
+            g.classList.toggle('is-dimmed', s !== sectionId);
+        });
+        setActiveDot(sectionId);
+        activeSection = sectionId;
+    }
+
+    function exitFocus() {
+        body.classList.remove('nav-focus-mode');
+        SECTIONS.forEach(s => {
+            const g = getGroup(s);
+            if (!g) return;
+            g.classList.remove('is-active', 'is-dimmed');
+        });
+        clearActiveDot();
+        activeSection = null;
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const section = link.dataset.section;
+
+            // Clicking the active section toggles focus OFF
+            if (activeSection === section) {
+                exitFocus();
+                return;
+            }
+
+            // Otherwise scroll to it and focus
+            getGroup(section)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            enterFocus(section);
+        });
+    });
+
+    // IntersectionObserver — only updates dot when no section is focused
+    const visibility = {};
+    SECTIONS.forEach(s => (visibility[s] = 0));
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            visibility[e.target.id.replace('sec-', '')] = e.intersectionRatio;
+        });
+
+        // Don't touch the dot while a section is focused
+        if (activeSection !== null) return;
+
+        const most = SECTIONS.reduce((best, s) =>
+            visibility[s] > visibility[best] ? s : best
+        , SECTIONS[0]);
+
+        setActiveDot(most);
+    }, { threshold: [0, 0.15, 0.4, 0.65, 1.0] });
+
+    SECTIONS.forEach(s => { const g = getGroup(s); if (g) observer.observe(g); });
+})();
+
+
+// ─── 3D Gallery Slider ────────────────────────────────────────
+(function () {
+    const stage    = document.querySelector('.gallery-stage');
+    const track    = document.querySelector('.gallery-track');
+    const cards    = Array.from(document.querySelectorAll('.gallery-card'));
+    const dotsWrap = document.querySelector('.gallery-dots');
+    const btnPrev  = document.querySelector('.gallery-btn--prev');
+    const btnNext  = document.querySelector('.gallery-btn--next');
+    if (!stage || !cards.length) return;
+
+    const TOTAL      = cards.length;
+    const SPREAD_X   = 260;
+    const SPREAD_Z   = 120;
+    const ROT_Y      = 38;
+    const SCALE_SIDE = 0.82;
+
+    let current = 0;
+    let locked  = false;
+
+    // Build dot indicators
+    const dots = cards.map((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'gallery-dot';
+        d.setAttribute('role', 'tab');
+        d.setAttribute('aria-label', `Go to slide ${i + 1}`);
+        d.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(d);
+        return d;
+    });
+
+    function mod(n, m) { return ((n % m) + m) % m; }
+
+    function applyPositions(idx, animate) {
+        cards.forEach((card, i) => {
+            const offset  = mod(i - idx + Math.floor(TOTAL / 2), TOTAL) - Math.floor(TOTAL / 2);
+            const x       = offset * SPREAD_X;
+            const z       = -Math.abs(offset) * SPREAD_Z;
+            const rotY    = -offset * ROT_Y;
+            const scale   = offset === 0 ? 1 : Math.max(0.6, SCALE_SIDE - Math.abs(offset) * 0.06);
+            const opacity = Math.abs(offset) >= Math.ceil(TOTAL / 2) ? 0 : 1 - Math.abs(offset) * 0.18;
+            const zIndex  = TOTAL - Math.abs(offset);
+
+            // Suppress transition on first paint so cards don't fly in from origin
+            card.style.transition = animate
+                ? 'transform 650ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 500ms ease'
+                : 'none';
+
+            card.style.transform = `translateX(${x}px) translateZ(${z}px) rotateY(${rotY}deg) scale(${scale})`;
+            card.style.opacity   = opacity;
+            card.style.zIndex    = zIndex;
+            card.classList.toggle('is-center', offset === 0);
+        });
+
+        dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+    }
+
+    function goTo(idx) {
+        if (locked) return;
+        locked  = true;
+        current = mod(idx, TOTAL);
+        applyPositions(current, true);
+        // Unlock after transition finishes
+        setTimeout(() => (locked = false), 660);
+    }
+
+    btnNext.addEventListener('click', () => goTo(current + 1));
+    btnPrev.addEventListener('click', () => goTo(current - 1));
+
+    // Keyboard nav (only when hovering the stage)
+    stage.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight') goTo(current + 1);
+        if (e.key === 'ArrowLeft')  goTo(current - 1);
+    });
+
+    // Click a side card to bring it to center
+    cards.forEach((card, i) => {
+        card.addEventListener('click', () => {
+            if (!card.classList.contains('is-center')) goTo(i);
+        });
+    });
+
+    // Swipe / drag — explicitly ignore button and dot targets
+    let dragStart = null;
+    stage.addEventListener('pointerdown', e => {
+        if (e.target.closest('.gallery-btn, .gallery-dot')) return;
+        dragStart = e.clientX;
+    });
+    stage.addEventListener('pointerup', e => {
+        if (dragStart === null) return;
+        const delta = e.clientX - dragStart;
+        dragStart = null;
+        if (Math.abs(delta) > 40) goTo(delta < 0 ? current + 1 : current - 1);
+    });
+    stage.addEventListener('pointerleave', () => { dragStart = null; });
+
+    // Auto-advance — pause on any interaction, don't restart
+    let autoTimer = setInterval(() => goTo(current + 1), 4000);
+    stage.addEventListener('pointerdown', () => clearInterval(autoTimer), { once: true });
+
+    // Init without animation (suppress on first paint)
+    applyPositions(current, false);
+})();
+
+
+// ─── Contact Form Submit ──────────────────────────────────────
+(function () {
+    const btn      = document.getElementById('contactSubmit');
+    const textSpan = btn?.querySelector('.contact-submit-text');
+    if (!btn) return;
+
+    const fields = {
+        name:     document.getElementById('cf-name'),
+        relation: document.getElementById('cf-relation'),
+        email:    document.getElementById('cf-email'),
+        subject:  document.getElementById('cf-subject'),
+        message:  document.getElementById('cf-message'),
+    };
+
+    function clearForm() {
+        Object.values(fields).forEach(f => {
+            if (!f) return;
+            f.value = f.tagName === 'SELECT' ? '' : '';
+
+            if (f.tagName === 'SELECT') f.selectedIndex = 0;
+        });
+    }
+
+    btn.addEventListener('click', () => {
+        const name    = fields.name?.value.trim();
+        const email   = fields.email?.value.trim();
+        const message = fields.message?.value.trim();
+
+        // Validation
+        if (!name || !email || !message) {
+            openModal({
+                icon:  '♡',
+                type:  'warn',
+                title: 'Missing Required Fields',
+                body:  'Please fill in your name, email address, and message before sending.',
+            });
+            return;
+        }
+
+        btn.disabled         = true;
+        btn.style.opacity    = '0.75';
+        textSpan.textContent = 'Sending…';
+
+        setTimeout(() => {
+            clearForm();
+
+            btn.disabled         = false;
+            btn.style.opacity    = '1';
+            textSpan.textContent = 'Send Message';
+
+            openModal({
+                icon:  '♡',
+                type:  'contact',
+                title: 'Message Sent',
+                body:  `Thank you, ${name}. Your message has been received by CCU-NORTH-04 staff. We'll respond to ${email} within 24 hours.`,
+            });
+        }, 1200);
+    });
+
+    function openModal({ icon, type, title, body }) {
+        window.playQASound?.();
+
+        const overlay  = document.getElementById('qa-modal');
+        const iconEl   = document.getElementById('qa-modal-icon');
+        const titleEl  = document.getElementById('qa-modal-title');
+        const bodyEl   = document.getElementById('qa-modal-body');
+
+        iconEl.textContent  = icon;
+        iconEl.dataset.type = type;
+        titleEl.textContent = title;
+        bodyEl.textContent  = body;
+        overlay.classList.add('is-open');
+        document.getElementById('qa-modal-close').focus();
+    }
+})();
