@@ -1,6 +1,6 @@
 <div align="center">
 
-# 𖹭 Medical Manager
+# ❤︎⁠ ❤︎⁠ ❤︎⁠ Medical Manager ❤︎⁠ ❤︎ ⁠❤︎⁠
 ### Patient Monitoring Dashboard — CCU-NORTH-04
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
