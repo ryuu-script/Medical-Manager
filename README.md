@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="WebScreenshots/Navigation Bar.png" alt="Medical Manager Navigation" width="600"/>
-
 # 𖹭 Medical Manager
 ### Patient Monitoring Dashboard — CCU-NORTH-04
 
@@ -20,7 +18,7 @@
 ## 𖹭 Full Preview
 
 <div align="center">
-<img src="WebScreenshots/Full_Site.png" alt="Full Site Preview" width="800"/>
+<img src="WebScreenshots/Full Site.png" alt="Full Site Preview" width="800"/>
 </div>
 
 ---
@@ -150,7 +148,7 @@ All sounds are throttled, cloned per-play, and wrapped in `.catch(() => {})` to 
 ## 𖹭 Project Structure
 
 ```
-𖹭 project/
+📦 project/
 ├── main.html              # Main page structure
 ├── main.css               # All styles & design tokens
 ├── main.js                # All interactive behavior
