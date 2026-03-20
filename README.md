@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="WebScreenshots/Navigation_Bar.png" alt="Medical Manager Navigation" width="600"/>
+<img src="WebScreenshots/Navigation Bar.png" alt="Medical Manager Navigation" width="600"/>
 
 # 𖹭 Medical Manager
 ### Patient Monitoring Dashboard — CCU-NORTH-04
